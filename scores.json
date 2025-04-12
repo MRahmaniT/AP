@@ -1,0 +1,10 @@
+{
+  "Bob" : {
+    "name" : "Bob",
+    "score" : 80
+  },
+  "Alice" : {
+    "name" : "Alice",
+    "score" : 100
+  }
+}

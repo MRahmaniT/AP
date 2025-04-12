@@ -44,6 +44,9 @@ public class DataManager {
             );
             players.clear();
             players.putAll(loaded);
+            for (Person p : players.values()){
+                addPerson(p);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

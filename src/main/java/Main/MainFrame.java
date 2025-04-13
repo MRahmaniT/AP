@@ -6,8 +6,8 @@ import Game.GamePanel;
 import Menu.MenuPanel;
 
 public class MainFrame extends JFrame {
-    private CardLayout cardLayout;
-    private JPanel mainPanel; // This will hold the cards
+    private static CardLayout cardLayout;
+    private static JPanel mainPanel; // This will hold the cards
     private MenuPanel menuPanel;
     private GamePanel gamePanel;
 
@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
     }
 
     // A method to switch to the Game panel
-    public void showGame() {
+    public static void showGame() {
         cardLayout.show(mainPanel, "Game");
     }
 

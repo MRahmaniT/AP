@@ -4,6 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 
+import Main.Main;
+import Main.MainFrame;
+
 public class MenuPanel extends JPanel {
 
     public MenuPanel() {
@@ -19,6 +22,7 @@ public class MenuPanel extends JPanel {
 
         // Add action listeners for each button
         btnStartGame.addActionListener(e -> {
+            MainFrame.showGame();
             System.out.println("Start New Game clicked");
             // TODO: switch to your GameFrame or show the game panel
         });

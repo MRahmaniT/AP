@@ -14,22 +14,28 @@ public class HexagonShape implements GameShape {
 
     // Current rotation angle in degrees
     private float rotation;
+    private float rotationSpeed;
 
-    public HexagonShape(float x, float y, float radius, float rotation) {
+    public HexagonShape(float x, float y, float radius, float rotationSpeed) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.rotation = rotation;  // start unrotated
+        this.rotationSpeed = rotationSpeed;
+        this.rotation = 0f;
+    }
+
+    public void increaseRotationSpeed(float rotationSpeed) {
+        this.rotationSpeed = this.rotationSpeed + rotationSpeed;
     }
 
     @Override
     public void update() {
-        // rotate rate
-        rotation += 0.1f;
-
-        if (rotation >= 360) {
-            rotation -= 360;
+        // Rotation rate
+        rotation += rotationSpeed;
+        if (rotation >= 360f) {
+            rotation -= 360f;
         }
+        increaseRotationSpeed(0.001f);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package Game;
 
-import Shape.RotatingBackground;
 import Shape.GameShape;
+import Shape.RotatingBackground;
+import Shape.HexagonShape;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -14,15 +15,18 @@ import java.util.List;
 public class GamePanel extends JPanel implements ActionListener {
 
     private final List<GameShape> shapes = new ArrayList<>();
-
+    int x = getWidth() / 2;
+    int y = getHeight() / 2;
     public GamePanel() {
         // ~120 FPS
         Timer timer = new Timer(8, this);
         timer.start();
 
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame
-        RotatingBackground bg = new RotatingBackground(1000, 0.1f);
+        RotatingBackground bg = new RotatingBackground(1000, 0.03f);
+        HexagonShape hs = new HexagonShape(x, y,50,0.03f);
         shapes.add(bg);
+        shapes.add(hs);
     }
 
     @Override

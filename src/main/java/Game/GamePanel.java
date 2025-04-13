@@ -17,8 +17,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private List<GameShape> shapes = new ArrayList<>();
 
     public GamePanel() {
-        // ~60 FPS
-        timer = new Timer(16, this);
+        // ~120 FPS
+        timer = new Timer(8, this);
         timer.start();
 
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame

@@ -6,7 +6,7 @@ import java.awt.geom.Path2D;
 
 public class RotatingBackground implements GameShape {
     private float rotation;//in degrees
-    private final float rotationSpeed;
+    private float rotationSpeed;
     private final float radius;
 
     private final Color[] sliceColors;
@@ -23,6 +23,10 @@ public class RotatingBackground implements GameShape {
         };
     }
 
+    public void increaseRotationSpeed(float rotationSpeed) {
+        this.rotationSpeed = this.rotationSpeed + rotationSpeed;
+    }
+
     @Override
     public void update() {
         // Rotation rate
@@ -30,6 +34,7 @@ public class RotatingBackground implements GameShape {
         if (rotation >= 360f) {
             rotation -= 360f;
         }
+        increaseRotationSpeed(0.001f);
     }
 
     @Override

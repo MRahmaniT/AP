@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 
-import Main.Main;
 import Main.MainFrame;
 
 public class MenuPanel extends JPanel {
@@ -22,24 +21,20 @@ public class MenuPanel extends JPanel {
 
         // Add action listeners for each button
         btnStartGame.addActionListener(e -> {
-            MainFrame.showGame();
+            MainFrame.takePlayerName();
             System.out.println("Start New Game clicked");
-            // TODO: switch to your GameFrame or show the game panel
         });
 
         btnBestRecord.addActionListener(e -> {
             System.out.println("Best Record clicked");
-            // TODO: retrieve from DataManager and show best score, etc.
         });
 
         btnHistory.addActionListener(e -> {
             System.out.println("Game History clicked");
-            // TODO: retrieve or display list of played games from DataManager
         });
 
         btnSettings.addActionListener(e -> {
             System.out.println("Settings clicked");
-            // TODO: open or switch to a settings panel
         });
 
         btnExit.addActionListener(e -> {

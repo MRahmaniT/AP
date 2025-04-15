@@ -1,14 +1,18 @@
 {
-  "Bob" : {
-    "name" : "Bob",
-    "score" : 80
+  "asdasd" : {
+    "name" : "asdasd",
+    "score" : 0
   },
-  "Alice" : {
-    "name" : "Alice",
-    "score" : 100
+  "sdsda" : {
+    "name" : "sdsda",
+    "score" : 0
   },
-  "Ali" : {
-    "name" : "Ali",
-    "score" : 100
+  "asfdesdnfjdsnfls" : {
+    "name" : "asfdesdnfjdsnfls",
+    "score" : 0
+  },
+  "dasdasd" : {
+    "name" : "dasdasd",
+    "score" : 0
   }
 }

@@ -4,12 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import Game.GamePanel;
 import Menu.MenuPanel;
+import Player.PlayerPanel;
+import Data.DataManager;
 
 public class MainFrame extends JFrame {
     private static CardLayout cardLayout;
-    private static JPanel mainPanel; // This will hold the cards
+    private static JPanel mainPanel;
+
+    //Panels
     private MenuPanel menuPanel;
     private GamePanel gamePanel;
+    private PlayerPanel playerPanel;
 
     public MainFrame() {
         cardLayout = new CardLayout();
@@ -18,10 +23,12 @@ public class MainFrame extends JFrame {
         // Create or instantiate your cards
         menuPanel = new MenuPanel();
         gamePanel = new GamePanel();
+        playerPanel = new PlayerPanel();
 
         // Add them with identifying names
         mainPanel.add(menuPanel, "Menu");
         mainPanel.add(gamePanel, "Game");
+        mainPanel.add(playerPanel, "Name");
 
         // Add the mainPanel to the frame
         add(mainPanel);
@@ -37,8 +44,13 @@ public class MainFrame extends JFrame {
     }
 
     // A method to switch to the Game panel
+    public static void showMenu() {
+        cardLayout.show(mainPanel, "Menu");
+    }
     public static void showGame() {
         cardLayout.show(mainPanel, "Game");
     }
-
+    public static void takePlayerName() {
+        cardLayout.show(mainPanel, "Name");
+    }
 }

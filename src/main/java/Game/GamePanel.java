@@ -3,9 +3,9 @@ package Game;
 import Shape.GameShape;
 import Shape.RotatingBackground;
 import Shape.HexagonShape;
+import Data.DataManager;
 
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +14,16 @@ import java.util.List;
 
 public class GamePanel extends JPanel implements ActionListener {
 
+    private DataManager dataManager = new DataManager();
     private final List<GameShape> shapes = new ArrayList<>();
+    private JLabel bestScoreLabel;
+
     public GamePanel() {
+        int bestScore = dataManager.getBestScore();
+        bestScoreLabel = new JLabel("Best Score: " + bestScore, SwingConstants.LEFT);
+        bestScoreLabel.setForeground(Color.MAGENTA);
+        bestScoreLabel.setFont(bestScoreLabel.getFont().deriveFont(Font.BOLD, 18f));
+        add(bestScoreLabel);
         // ~120 FPS
         Timer timer = new Timer(8, this);
         timer.start();

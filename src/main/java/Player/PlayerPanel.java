@@ -13,6 +13,14 @@ public class PlayerPanel extends JPanel {
     private final DataManager dataManager = new DataManager();
     private final JTextField nameField;
     private final JLabel infoLabel;
+    private String whoIsPlaying;
+
+    public String getWhoIsPlaying() {
+        return whoIsPlaying;
+    }
+    public void setWhoIsPlaying(String whoIsPlaying) {
+        this.whoIsPlaying = whoIsPlaying;
+    }
 
     public PlayerPanel() {
 
@@ -30,7 +38,7 @@ public class PlayerPanel extends JPanel {
         // Name text field
         nameField = new JTextField(15);
         gbc.gridy = 1;
-        gbc.gridwidth = 2;
+        gbc.gridwidth = 3;
         add(nameField, gbc);
 
         // Info label to display messages
@@ -74,6 +82,7 @@ public class PlayerPanel extends JPanel {
             dataManager.saveScores();
         }
         // If we got here, we have a valid Person
+        setWhoIsPlaying(name);
         MainFrame.showGame();
     }
 

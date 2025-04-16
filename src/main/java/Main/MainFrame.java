@@ -12,6 +12,7 @@ public class MainFrame extends JFrame {
     private static JPanel mainPanel;
 
     //Panels
+    private DataManager dataManager = new DataManager();
     private MenuPanel menuPanel;
     private GamePanel gamePanel;
     private PlayerPanel playerPanel;
@@ -21,7 +22,7 @@ public class MainFrame extends JFrame {
         mainPanel = new JPanel(cardLayout); // set the CardLayout
 
         // Create or instantiate your cards
-        menuPanel = new MenuPanel();
+        menuPanel = new MenuPanel(dataManager);
         gamePanel = new GamePanel();
         playerPanel = new PlayerPanel();
 

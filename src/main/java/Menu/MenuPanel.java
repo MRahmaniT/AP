@@ -1,52 +1,92 @@
 package Menu;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-
+import Data.DataManager;
+import Player.Person;
 import Main.MainFrame;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Comparator;
 
 public class MenuPanel extends JPanel {
 
-    public MenuPanel() {
-        // 5 rows, 1 column, 10px horizontal/vertical gap
+    private Image backgroundImage;
+    private JLabel bestScoreLabel;
+
+    public MenuPanel(DataManager dataManager) {
+        // Optional: load scores here, or do it in MainFrame before calling this constructor
+        dataManager.loadScores();
+
+        // Compute the best score (0 if no players yet)
+        int bestScore = dataManager.getBestScore();
+
+        // Try loading a background image (optional)
+        try {
+            backgroundImage = ImageIO.read(new File("background.jpg")); // put your real image path
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //setPreferredSize(new Dimension(500, 400));
+
+        // 5 rows, 1 column, with 10px gaps
         setLayout(new GridLayout(5, 1, 10, 10));
 
-        // Create the buttons
-        JButton btnStartGame   = new JButton("Start New Game");
-        JButton btnBestRecord  = new JButton("Best Record");
-        JButton btnHistory     = new JButton("Game History");
-        JButton btnSettings    = new JButton("Settings");
-        JButton btnExit        = new JButton("Exit");
+        // 1) A colorful label at the top showing best score
+        bestScoreLabel = new JLabel("Best Score: " + bestScore, SwingConstants.CENTER);
+        bestScoreLabel.setForeground(Color.MAGENTA);
+        bestScoreLabel.setFont(bestScoreLabel.getFont().deriveFont(Font.BOLD, 18f));
+        add(bestScoreLabel);
 
-        // Add action listeners for each button
+        // 2) Start New Game button
+        JButton btnStartGame = new JButton("Start New Game");
         btnStartGame.addActionListener(e -> {
             MainFrame.takePlayerName();
             System.out.println("Start New Game clicked");
         });
+        add(btnStartGame);
 
-        btnBestRecord.addActionListener(e -> {
-            System.out.println("Best Record clicked");
-        });
-
+        // 3) Game History button
+        JButton btnHistory = new JButton("Game History");
         btnHistory.addActionListener(e -> {
             System.out.println("Game History clicked");
+            // Show game history or do something similar
         });
+        add(btnHistory);
 
+        // 4) Settings button
+        JButton btnSettings = new JButton("Settings");
         btnSettings.addActionListener(e -> {
             System.out.println("Settings clicked");
+            // Show or switch to a settings panel
         });
+        add(btnSettings);
 
+        // 5) Exit button
+        JButton btnExit = new JButton("Exit");
         btnExit.addActionListener(e -> {
             System.out.println("Exit clicked");
             System.exit(0);
         });
-
-        // Add buttons to the panel
-        add(btnStartGame);
-        add(btnBestRecord);
-        add(btnHistory);
-        add(btnSettings);
         add(btnExit);
+    }
+
+    // Override paintComponent to draw the background
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // If we have a background image, fill the panel with it
+        if (backgroundImage != null) {
+            // Draw image scaled to panel size
+            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+        } else {
+            // Optionally, fill with a solid color or gradient
+            // e.g., g.setColor(Color.DARK_GRAY);
+            // g.fillRect(0, 0, getWidth(), getHeight());
+        }
     }
 }

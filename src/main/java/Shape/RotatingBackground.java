@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
 
 public class RotatingBackground implements GameShape {
-    private float rotation;//in degrees
-    private float rotationSpeed;
+    public static float rotation;//in degrees
+    public static float rotationSpeed;
     private final float radius;
 
     private final Color[] sliceColors;
@@ -80,5 +80,10 @@ public class RotatingBackground implements GameShape {
 
         // Restore transform so subsequent drawing isn’t rotated
         g2d.setTransform(originalTransform);
+    }
+
+    @Override
+    public float getRadius() {
+        return this.radius;
     }
 }

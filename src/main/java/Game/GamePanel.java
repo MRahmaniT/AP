@@ -4,6 +4,7 @@ import Player.Person;
 import Shape.GameShape;
 import Shape.RotatingBackground;
 import Shape.HexagonShape;
+import Shape.HexagonShapeMode1;
 import Data.DataManager;
 import Player.PlayerPanel;
 
@@ -12,14 +13,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GamePanel extends JPanel implements ActionListener {
-
-    private Timer timer = new Timer(10, this);
+    private Timer timer = new Timer(10,this);
     private final List<GameShape> shapes = new ArrayList<>();
+    private HexagonShapeMode1 hs1 = new HexagonShapeMode1(0, 0, 200, 0.03f, 0.03f);;
     private final DataManager dataManager = new DataManager();
     private final PlayerPanel playerPanel = new PlayerPanel();
     private final Map<String, Person> players;
@@ -53,7 +53,8 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame
         RotatingBackground bg = new RotatingBackground(1000, 0.03f);
-        HexagonShape hs = new HexagonShape(0, 0,50,0.03f);
+        HexagonShape hs = new HexagonShape(0, 0,10,0.03f);
+
         shapes.add(bg);
         shapes.add(hs);
 
@@ -93,15 +94,27 @@ public class GamePanel extends JPanel implements ActionListener {
             dataManager.setBestScore(scoreCounter);
             bestScore = scoreCounter;
         }
-        System.out.println("Best Score: " + bestScore + "Your Score " + scoreCounter);
+        //System.out.println("Best Score: " + bestScore + "Your Score " + scoreCounter);
         bestScoreLabel.setText("Best Score: " + bestScore);
         yourScoreLabel.setText("Your Score: " + scoreCounter);
         add(bestScoreLabel);
         dataManager.saveFile();
 
         // Update each shape
+        ArrayList<Integer> toRemove = new ArrayList<>();
         for (GameShape shape : shapes) {
             shape.update();
+            if(shape.getRadius()<10){
+                toRemove.add(shapes.indexOf(shape));
+            }
+        }
+
+        int removed = 0;
+        for (int i : toRemove) {
+            if(shapes.get(i).getRadius()<10){
+                shapes.remove(i-removed);
+                removed++;
+            }
         }
         repaint();
     }

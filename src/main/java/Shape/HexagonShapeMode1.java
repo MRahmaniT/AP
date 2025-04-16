@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
 import java.util.ArrayList;
 
-public class HexagonShape implements GameShape {
+public class HexagonShapeMode1 implements GameShape {
 
     // Position of the hexagon’s center
     private float x, y;
@@ -16,27 +16,37 @@ public class HexagonShape implements GameShape {
     // Current rotation angle in degrees
     private float rotation;
     private float rotationSpeed;
+    private float speed;
 
-    public HexagonShape(float x, float y, float radius, float rotationSpeed) {
+    public HexagonShapeMode1(float x, float y, float radius, float rotationSpeed, float speed) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.rotationSpeed = rotationSpeed;
         this.rotation = 0f;
+        this.speed = speed;
     }
 
     public void increaseRotationSpeed(float rotationSpeed) {
         this.rotationSpeed = this.rotationSpeed + rotationSpeed;
+    }
+    public void increaseSpeed(float speed) {
+        this.speed = this.speed + speed;
     }
 
     @Override
     public void update() {
         // Rotation rate
         rotation += rotationSpeed;
+
+        //Closing rate
+        radius -= speed;
+
         if (rotation >= 360f) {
             rotation -= 360f;
         }
         increaseRotationSpeed(0.001f);
+        increaseSpeed(0.001f);
     }
 
     @Override
@@ -50,7 +60,7 @@ public class HexagonShape implements GameShape {
 
         // Create a path for the hexagon
         Path2D.Float hexagon = new Path2D.Float();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             Path2D.Float part = new Path2D.Float();
             double angle = Math.toRadians(60 * i);
             float vx1 = (float)(radius * Math.cos(angle));

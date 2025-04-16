@@ -19,7 +19,7 @@ import java.util.Map;
 public class GamePanel extends JPanel implements ActionListener {
     private Timer timer = new Timer(10,this);
     private final List<GameShape> shapes = new ArrayList<>();
-    private HexagonShapeMode1 hs1 = new HexagonShapeMode1(0, 0, 200, 0.03f, 0.03f);;
+    private HexagonShapeMode1 hs1;
     private final DataManager dataManager = new DataManager();
     private final PlayerPanel playerPanel = new PlayerPanel();
     private final Map<String, Person> players;
@@ -57,7 +57,10 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
-        shapes.add(hs1);
+        for(int i = 1; i < 101; i++){
+             hs1 = new HexagonShapeMode1(0, 0, 200*i, 0.03f, 0.03f);
+            shapes.add(hs1);
+        }
 
         timer.start();
     }

@@ -13,7 +13,7 @@
   },
   "dd" : {
     "name" : "dd",
-    "score" : 10
+    "score" : 47
   },
   "bb" : {
     "name" : "bb",
@@ -27,14 +27,6 @@
     "name" : "vv",
     "score" : 3
   },
-  "tt" : {
-    "name" : "tt",
-    "score" : 14
-  },
-  "rr" : {
-    "name" : "rr",
-    "score" : 2
-  },
   "zz" : {
     "name" : "zz",
     "score" : 1
@@ -42,6 +34,14 @@
   "xx" : {
     "name" : "xx",
     "score" : 21
+  },
+  "tt" : {
+    "name" : "tt",
+    "score" : 14
+  },
+  "rr" : {
+    "name" : "rr",
+    "score" : 2
   },
   "fg" : {
     "name" : "fg",

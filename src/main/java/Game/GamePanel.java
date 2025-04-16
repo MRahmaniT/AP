@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
+        shapes.add(hs1);
 
         timer.start();
     }

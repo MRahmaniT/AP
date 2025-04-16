@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
 
 public class RotatingBackground implements GameShape {
-    public static float rotation;//in degrees
-    public static float rotationSpeed;
+    private float rotation;//in degrees
+    private float rotationSpeed;
     private final float radius;
 
     private final Color[] sliceColors;

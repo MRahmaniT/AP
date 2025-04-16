@@ -74,7 +74,6 @@ public class PlayerPanel extends JPanel {
         // Check if the person exists
         Person person = dataManager.getPerson(name);
         if (person == null) {
-            infoLabel.setText(name);
             person = new Person(name);
             dataManager.addPerson(person);
             dataManager.saveFile();

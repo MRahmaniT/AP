@@ -25,21 +25,31 @@ public class GamePanel extends JPanel implements ActionListener {
     private final Map<String, Person> players;
     private Person whoIsPlaying;
     private JLabel bestScoreLabel;
+    private JLabel yourScoreLabel;
     private int bestScore;
     private int scoreCounter = 0;
     private long startScoreCounter = 0;
     private boolean firstEnter = true;
 
     public GamePanel() {
+        setLayout(new BorderLayout());
         dataManager.loadFile();
         players = dataManager.getAllPlayers();
 
         //Best scoreCounter
         bestScore = dataManager.getBestScore();
-        bestScoreLabel = new JLabel("Best Score: " + bestScore);
-        bestScoreLabel.setForeground(Color.MAGENTA);
+        bestScoreLabel = new JLabel("Best Score: " + bestScore,SwingConstants.LEFT);
+        bestScoreLabel.setVerticalAlignment(SwingConstants.NORTH);
+        bestScoreLabel.setForeground(Color.BLACK);
         bestScoreLabel.setFont(bestScoreLabel.getFont().deriveFont(Font.BOLD, 18f));
         add(bestScoreLabel);
+
+        //Your scoreCounter
+        yourScoreLabel = new JLabel("Your Score: " + scoreCounter,SwingConstants.RIGHT);
+        yourScoreLabel.setVerticalAlignment(SwingConstants.NORTH);
+        yourScoreLabel.setForeground(Color.BLACK);
+        yourScoreLabel.setFont(yourScoreLabel.getFont().deriveFont(Font.BOLD, 18f));
+        add(yourScoreLabel);
 
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame
         RotatingBackground bg = new RotatingBackground(1000, 0.03f);
@@ -69,13 +79,8 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        dataManager.loadFile();
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
-        if (scoreCounter > bestScore) {
-            dataManager.setBestScore(scoreCounter);
-            bestScore = scoreCounter;
-            bestScoreLabel.setText("Best Score: " + bestScore);
-            add(bestScoreLabel);
-        }
         if (whoIsPlaying != null) {
             if (firstEnter) {
                 startScoreCounter = System.currentTimeMillis();
@@ -83,8 +88,17 @@ public class GamePanel extends JPanel implements ActionListener {
             }
             scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
             whoIsPlaying.setScore(scoreCounter);
-            dataManager.saveFile();
         }
+        if (scoreCounter > bestScore) {
+            dataManager.setBestScore(scoreCounter);
+            bestScore = scoreCounter;
+        }
+        System.out.println("Best Score: " + bestScore + "Your Score " + scoreCounter);
+        bestScoreLabel.setText("Best Score: " + bestScore);
+        yourScoreLabel.setText("Your Score: " + scoreCounter);
+        add(bestScoreLabel);
+        dataManager.saveFile();
+
         // Update each shape
         for (GameShape shape : shapes) {
             shape.update();

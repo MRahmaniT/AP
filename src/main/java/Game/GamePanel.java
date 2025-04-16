@@ -27,6 +27,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private JLabel bestScoreLabel;
     private int bestScore;
     private int scoreCounter = 0;
+    private long startScoreCounter = 0;
+    private boolean firstEnter = true;
 
     public GamePanel() {
         dataManager.loadFile();
@@ -68,17 +70,19 @@ public class GamePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
-        scoreCounter = scoreCounter + 10;
-        if((scoreCounter)/1000>bestScore){
-            dataManager.setBestScore((scoreCounter)/1000);
-            bestScore=(scoreCounter)/1000;
+        if (scoreCounter > bestScore) {
+            dataManager.setBestScore(scoreCounter);
+            bestScore = scoreCounter;
             bestScoreLabel.setText("Best Score: " + bestScore);
             add(bestScoreLabel);
         }
-        if (whoIsPlaying != null){
-            System.out.println(bestScore);
-            System.out.println(scoreCounter/1000);
-            whoIsPlaying.setScore(scoreCounter/1000);
+        if (whoIsPlaying != null) {
+            if (firstEnter) {
+                startScoreCounter = System.currentTimeMillis();
+                firstEnter = false;
+            }
+            scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
+            whoIsPlaying.setScore(scoreCounter);
             dataManager.saveFile();
         }
         // Update each shape

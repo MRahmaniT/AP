@@ -1,7 +1,6 @@
 package Menu;
 
 import Data.DataManager;
-import Player.Person;
 import Main.MainFrame;
 
 import javax.imageio.ImageIO;
@@ -9,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Comparator;
 
 public class MenuPanel extends JPanel {
 
@@ -18,7 +16,7 @@ public class MenuPanel extends JPanel {
 
     public MenuPanel(DataManager dataManager) {
         // Optional: load scores here, or do it in MainFrame before calling this constructor
-        dataManager.loadScores();
+        dataManager.loadFile();
 
         // Compute the best score (0 if no players yet)
         int bestScore = dataManager.getBestScore();

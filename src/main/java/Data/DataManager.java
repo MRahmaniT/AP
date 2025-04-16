@@ -12,13 +12,16 @@ import java.util.Map;
 public class DataManager {
     private static final String FILE_NAME = "scores.json";
     private final Map<String, Person> players = new HashMap<>();
-    private int bestScore;
+    private static int bestScore;
 
     // Setters
     public void addPerson(Person person) {
         players.put(person.getName(), person);
     }
-    public void setBestScore(int bestScore) { this.bestScore = bestScore; }
+    public void setBestScore(int bestScore) {
+        if (DataManager.bestScore<bestScore) {
+            DataManager.bestScore = bestScore;
+        } }
 
     // Getters
     public Person getPerson(String name) {
@@ -40,7 +43,7 @@ public class DataManager {
     }
 
     // Load the map from JSON
-    public void loadScores() {
+    public void loadFile() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
             System.out.println("No existing score file found.");
@@ -63,7 +66,7 @@ public class DataManager {
     }
 
     // Save the map to JSON
-    public void saveScores() {
+    public void saveFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writerWithDefaultPrettyPrinter()

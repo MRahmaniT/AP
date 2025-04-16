@@ -3,8 +3,6 @@ package Player;
 import Data.DataManager;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Map;
 
 import Main.MainFrame;
 
@@ -13,13 +11,13 @@ public class PlayerPanel extends JPanel {
     private final DataManager dataManager = new DataManager();
     private final JTextField nameField;
     private final JLabel infoLabel;
-    private String whoIsPlaying;
+    private static String whoIsPlaying;
 
     public String getWhoIsPlaying() {
         return whoIsPlaying;
     }
     public void setWhoIsPlaying(String whoIsPlaying) {
-        this.whoIsPlaying = whoIsPlaying;
+        PlayerPanel.whoIsPlaying = whoIsPlaying;
     }
 
     public PlayerPanel() {
@@ -66,7 +64,7 @@ public class PlayerPanel extends JPanel {
     }
 
     private void handleProceed() {
-        dataManager.loadScores();
+        dataManager.loadFile();
         String name = nameField.getText().trim();
         if (name.isEmpty()) {
             infoLabel.setText("Name cannot be empty.");
@@ -79,7 +77,7 @@ public class PlayerPanel extends JPanel {
             infoLabel.setText(name);
             person = new Person(name);
             dataManager.addPerson(person);
-            dataManager.saveScores();
+            dataManager.saveFile();
         }
         // If we got here, we have a valid Person
         setWhoIsPlaying(name);

@@ -14,8 +14,8 @@ public class MainFrame extends JFrame {
     //Panels
     private DataManager dataManager = new DataManager();
     private MenuPanel menuPanel;
-    private GamePanel gamePanel;
-    private PlayerPanel playerPanel;
+    private static GamePanel gamePanel;
+    private static PlayerPanel playerPanel;
 
     public MainFrame() {
         cardLayout = new CardLayout();
@@ -49,9 +49,11 @@ public class MainFrame extends JFrame {
         cardLayout.show(mainPanel, "Menu");
     }
     public static void showGame() {
+        gamePanel = new GamePanel();
         cardLayout.show(mainPanel, "Game");
     }
     public static void takePlayerName() {
+        playerPanel = new PlayerPanel();
         cardLayout.show(mainPanel, "Name");
     }
 }

@@ -18,10 +18,7 @@ public class DataManager {
     public void addPerson(Person person) {
         players.put(person.getName(), person);
     }
-    public void setBestScore(int bestScore) {
-        if (DataManager.bestScore<bestScore) {
-            DataManager.bestScore = bestScore;
-        } }
+    public void setBestScore(int bestScore) { DataManager.bestScore = bestScore; }
 
     // Getters
     public Person getPerson(String name) {

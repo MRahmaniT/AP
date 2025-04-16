@@ -69,10 +69,10 @@ public class HexagonShapeMode1 implements GameShape {
             double angle = Math.toRadians(60 * i);
             float vx1 = (float)(radius * Math.cos(angle));
             float vy1 = (float)(radius * Math.sin(angle));
-            float vx2 = (float)((radius + 5f) * Math.cos(angle));
-            float vy2 = (float)((radius + 5f) * Math.sin(angle));
-            float vx3 = (float)((radius + 5f) * Math.cos(angle+Math.toRadians(60)));
-            float vy3 = (float)((radius + 5f) * Math.sin(angle+Math.toRadians(60)));
+            float vx2 = (float)((radius + 10f) * Math.cos(angle));
+            float vy2 = (float)((radius + 10f) * Math.sin(angle));
+            float vx3 = (float)((radius + 10f) * Math.cos(angle+Math.toRadians(60)));
+            float vy3 = (float)((radius + 10f) * Math.sin(angle+Math.toRadians(60)));
             float vx4 = (float)(radius * Math.cos(angle+Math.toRadians(60)));
             float vy4 = (float)(radius * Math.sin(angle+Math.toRadians(60)));
             part.moveTo(vx1, vy1);

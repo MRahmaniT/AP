@@ -1,11 +1,11 @@
 {
-  "ll" : {
-    "name" : "ll",
-    "score" : 12
-  },
   "hh" : {
     "name" : "hh",
     "score" : 0
+  },
+  "ll" : {
+    "name" : "ll",
+    "score" : 12
   },
   "ff" : {
     "name" : "ff",
@@ -18,6 +18,10 @@
   "bb" : {
     "name" : "bb",
     "score" : 45
+  },
+  "22" : {
+    "name" : "22",
+    "score" : 13
   },
   "jj" : {
     "name" : "jj",

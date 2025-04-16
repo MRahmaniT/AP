@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame
         RotatingBackground bg = new RotatingBackground(1000, 0.03f);
-        HexagonShape hs = new HexagonShape(0, 0,10,0.03f);
+        HexagonShape hs = new HexagonShape(0, 0,20,0.03f);
 
         shapes.add(bg);
         shapes.add(hs);
@@ -133,7 +133,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         int removed = 0;
         for (int i : toRemove) {
-            if(shapes.get(i).getRadius()<10){
+            if(shapes.get(i).getRadius()<20){
                 shapes.remove(i-removed);
                 removed++;
             }

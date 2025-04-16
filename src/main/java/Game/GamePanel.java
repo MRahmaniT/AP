@@ -5,6 +5,7 @@ import Shape.GameShape;
 import Shape.RotatingBackground;
 import Shape.HexagonShape;
 import Shape.HexagonShapeMode1;
+import Shape.HexagonShapeMode2;
 import Data.DataManager;
 import Player.PlayerPanel;
 
@@ -19,7 +20,9 @@ import java.util.Map;
 public class GamePanel extends JPanel implements ActionListener {
     private Timer timer = new Timer(10,this);
     private final List<GameShape> shapes = new ArrayList<>();
+    private final List<GameShape> shapesToDraw = new ArrayList<>();
     private HexagonShapeMode1 hs1;
+    private HexagonShapeMode2 hs2;
     private final DataManager dataManager = new DataManager();
     private final PlayerPanel playerPanel = new PlayerPanel();
     private final Map<String, Person> players;
@@ -57,9 +60,18 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
-        for(int i = 1; i < 101; i++){
-             hs1 = new HexagonShapeMode1(0, 0, 200*i, 0.03f, 0.03f);
-            shapes.add(hs1);
+        for(int i = 1; i < 201; i++){
+            int randomInt = (int)(Math.random() * 2);
+            if(randomInt == 1){
+                int randomInt1 = (int)(Math.random() * 6);
+                hs1 = new HexagonShapeMode1(0, 0, 200*i, 0.03f, 0.03f, randomInt1);
+                shapes.add(hs1);
+            }
+            if(randomInt == 0){
+                int randomInt2 = (int)(Math.random() * 2);
+                hs2 = new HexagonShapeMode2(0, 0, 200*i, 0.03f, 0.03f, randomInt2);
+                shapes.add(hs2);
+            }
         }
 
         timer.start();
@@ -76,7 +88,13 @@ public class GamePanel extends JPanel implements ActionListener {
         g2d.translate(cx, cy);
 
         // Now draw each shape
-        for (GameShape shape : shapes) {
+        shapesToDraw.clear();
+        for (int i = 1; i < 11; i++){
+            shapesToDraw.add(shapes.get(i));
+        }
+        shapes.get(0).draw(g2d);
+        shapes.get(1).draw(g2d);
+        for (GameShape shape : shapesToDraw) {
             shape.draw(g2d);
         }
         g2d.dispose();

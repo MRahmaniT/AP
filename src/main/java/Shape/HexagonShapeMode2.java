@@ -1,13 +1,9 @@
 package Shape;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Path2D;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.random.RandomGenerator;
 
-public class HexagonShapeMode1 implements GameShape {
+public class HexagonShapeMode2 implements GameShape {
 
     // Position of the hexagon’s center
     private float x, y;
@@ -21,7 +17,7 @@ public class HexagonShapeMode1 implements GameShape {
     private float speed;
     private int notPaint;
 
-    public HexagonShapeMode1(float x, float y, float radius, float rotationSpeed, float speed, int notPaint) {
+    public HexagonShapeMode2(float x, float y, float radius, float rotationSpeed, float speed, int notPaint) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -80,7 +76,7 @@ public class HexagonShapeMode1 implements GameShape {
             part.lineTo(vx3, vy3);
             part.lineTo(vx4, vy4);
             part.closePath();
-            if (i != this.notPaint){
+            if (i != this.notPaint && i != this.notPaint+2 && i != this.notPaint+4){
                 hexagon.append(part,false);
             }
         }

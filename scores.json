@@ -1,7 +1,7 @@
 {
   "ll" : {
     "name" : "ll",
-    "score" : 9
+    "score" : 12
   },
   "hh" : {
     "name" : "hh",
@@ -41,7 +41,7 @@
   },
   "rr" : {
     "name" : "rr",
-    "score" : 2
+    "score" : 10
   },
   "fg" : {
     "name" : "fg",
@@ -61,7 +61,7 @@
   },
   "ee" : {
     "name" : "ee",
-    "score" : 1
+    "score" : 36
   },
   "cc" : {
     "name" : "cc",
@@ -73,7 +73,7 @@
   },
   "gg" : {
     "name" : "gg",
-    "score" : 11
+    "score" : 17
   },
   "ww" : {
     "name" : "ww",
@@ -81,7 +81,7 @@
   },
   "uu" : {
     "name" : "uu",
-    "score" : 12
+    "score" : 22
   },
   "yy" : {
     "name" : "yy",
@@ -98,6 +98,10 @@
   "g" : {
     "name" : "g",
     "score" : 58
+  },
+  "h" : {
+    "name" : "h",
+    "score" : 5
   },
   "j" : {
     "name" : "j",

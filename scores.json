@@ -27,14 +27,6 @@
     "name" : "vv",
     "score" : 3
   },
-  "zz" : {
-    "name" : "zz",
-    "score" : 1
-  },
-  "xx" : {
-    "name" : "xx",
-    "score" : 21
-  },
   "tt" : {
     "name" : "tt",
     "score" : 14
@@ -42,6 +34,14 @@
   "rr" : {
     "name" : "rr",
     "score" : 10
+  },
+  "zz" : {
+    "name" : "zz",
+    "score" : 1
+  },
+  "xx" : {
+    "name" : "xx",
+    "score" : 21
   },
   "fg" : {
     "name" : "fg",

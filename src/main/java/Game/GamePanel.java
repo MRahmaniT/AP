@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
-        for(int i = 1; i < 201; i++){
+        for(int i = 1; i < 2001; i++){
             int randomInt = (int)(Math.random() * 2);
             if(randomInt == 1){
                 int randomInt1 = (int)(Math.random() * 6);
@@ -89,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Now draw each shape
         shapesToDraw.clear();
-        for (int i = 1; i < 11; i++){
+        for (int i = 1; i < 5; i++){
             shapesToDraw.add(shapes.get(i));
         }
         shapes.get(0).draw(g2d);

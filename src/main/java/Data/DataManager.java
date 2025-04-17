@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataManager {
-    private static final String FILE_NAME = "scores.json";
+    private static final String PLAYERS_FILE_NAME = "scores.json";
+    private static final String HISTORY_FILE_NAME = "history.json";
     private final Map<String, Person> players = new HashMap<>();
     private final Map<String, Integer> gameHistory = new HashMap<>();
     private static int bestScore;
@@ -35,25 +36,42 @@ public class DataManager {
         }
         return bestScore;
     }
+    public Person getBestPlayer() {
+        int bestScore = 0;
+        Person bestplayer = null;
+        for (Person p : players.values()){
+            if (p.getScore() > bestScore){
+                bestplayer = p;
+            }
+        }
+        return bestplayer;
+    }
 
     // Load the map from JSON
     public void loadFile() {
-        File file = new File(FILE_NAME);
-        if (!file.exists()) {
-            System.out.println("No existing score file found.");
+        File file1 = new File(PLAYERS_FILE_NAME);
+        File file2 = new File(HISTORY_FILE_NAME);
+        ObjectMapper mapper1 = new ObjectMapper();
+        ObjectMapper mapper2 = new ObjectMapper();
+        if (!file1.exists() || !file2.exists()) {
             return;
         }
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            Map<String, Person> loaded = mapper.readValue(
-                    file,
+            Map<String, Person> loaded1 = mapper1.readValue(
+                    file1,
                     new TypeReference<Map<String, Person>>() {}
             );
             players.clear();
-            players.putAll(loaded);
+            players.putAll(loaded1);
             for (Person p : players.values()){
                 addPerson(p);
             }
+            Map<String, Integer> loaded2 = mapper2.readValue(
+                    file2,
+                    new TypeReference<Map<String, Integer>>() {}
+            );
+            gameHistory.clear();
+            gameHistory.putAll(loaded2);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,10 +79,13 @@ public class DataManager {
 
     // Save the map to JSON
     public void saveFile() {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper1 = new ObjectMapper();
+        ObjectMapper mapper2 = new ObjectMapper();
         try {
-            mapper.writerWithDefaultPrettyPrinter()
-                    .writeValue(new File(FILE_NAME), players);
+            mapper1.writerWithDefaultPrettyPrinter()
+                    .writeValue(new File(PLAYERS_FILE_NAME), players);
+            mapper2.writerWithDefaultPrettyPrinter()
+                    .writeValue(new File(HISTORY_FILE_NAME), gameHistory);
         } catch (IOException e) {
             e.printStackTrace();
         }

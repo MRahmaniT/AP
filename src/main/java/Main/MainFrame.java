@@ -7,6 +7,7 @@ import Game.GameOverPanel;
 import Menu.MenuPanel;
 import Player.PlayerPanel;
 import Data.DataManager;
+import Data.HistoryPanel;
 
 public class MainFrame extends JFrame {
     private static CardLayout cardLayout;
@@ -18,6 +19,7 @@ public class MainFrame extends JFrame {
     private static GamePanel gamePanel;
     private static GameOverPanel gameOverPanel;
     private static PlayerPanel playerPanel;
+    private static HistoryPanel historyPanel;
 
     public MainFrame() {
         cardLayout = new CardLayout();
@@ -25,12 +27,14 @@ public class MainFrame extends JFrame {
 
         // Create or instantiate your cards
         menuPanel = new MenuPanel(dataManager);
+        historyPanel = new HistoryPanel(dataManager);
         gamePanel = new GamePanel();
         gameOverPanel = new GameOverPanel();
         playerPanel = new PlayerPanel();
 
         // Add them with identifying names
         mainPanel.add(menuPanel, "Menu");
+        mainPanel.add(historyPanel, "History");
         mainPanel.add(gamePanel, "Game");
         mainPanel.add(gameOverPanel, "GameOver");
         mainPanel.add(playerPanel, "Name");
@@ -54,7 +58,20 @@ public class MainFrame extends JFrame {
     }
     public static void showGame() {
         gamePanel = new GamePanel();
+        mainPanel.remove(gamePanel);
+        mainPanel.add(gamePanel, "Game");
+        mainPanel.revalidate();
+        mainPanel.repaint();
         cardLayout.show(mainPanel, "Game");
+    }
+    public static void showHistory() {
+        DataManager dataManager = new DataManager();
+        historyPanel = new HistoryPanel(dataManager);
+        mainPanel.remove(historyPanel);
+        mainPanel.add(historyPanel, "History");
+        mainPanel.revalidate();
+        mainPanel.repaint();
+        cardLayout.show(mainPanel, "History");
     }
     public static void showGameOver() {
         gameOverPanel = new GameOverPanel();

@@ -69,7 +69,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
-        for(int i = 1; i < 100; i++){
+        for(int i = 1; i < 10000; i++){
             int randomInt = (int)(Math.random() * 2);
             if(randomInt == 1){
                 int randomInt1 = (int)(Math.random() * 6);
@@ -103,7 +103,6 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         shapes.get(0).draw(g2d);
         shapes.get(1).draw(g2d);
-        Collections.shuffle(shapesToDraw);
         for (GameShape shape : shapesToDraw) {
             shape.draw(g2d);
         }
@@ -114,13 +113,12 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dataManager.loadFile();
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
-        if(scoreCounter>10){
+        if(scoreCounter>30){
             gameOver = true;
         }
         if (gameOver){
             dataManager.addGameHistory(whoIsPlaying.getName(), scoreCounter);
             dataManager.saveFile();
-            System.out.println(scoreCounter);
             timer.stop();
             MainFrame.showGameOver();
         }
@@ -131,6 +129,7 @@ public class GamePanel extends JPanel implements ActionListener {
             }
             scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
             whoIsPlaying.setScore(scoreCounter);
+            dataManager.addGameHistory(whoIsPlaying.getName(), scoreCounter);
         }
         if (scoreCounter > bestScore) {
             dataManager.setBestScore(scoreCounter);
@@ -153,10 +152,17 @@ public class GamePanel extends JPanel implements ActionListener {
         int removed = 0;
         for (int i : toRemove) {
             if(shapes.get(i).getRadius()<20){
-                GameShape shape = shapes.get(i-removed);
+                //Remove the small one
+                GameShape shape1 = shapes.get(i-removed);
                 shapes.remove(i-removed);
-                shapes.add(shape);
+                shapes.add(shape1);
                 removed++;
+
+                //Prevention of repetetion
+                int randomRemove = (int) (Math.random()*1000);
+                GameShape shape2 = shapes.get(randomRemove+10);
+                shapes.remove(shape2);
+                shapes.add(shape2);
             }
         }
         repaint();

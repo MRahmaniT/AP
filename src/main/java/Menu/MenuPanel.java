@@ -43,14 +43,12 @@ public class MenuPanel extends JPanel {
         JButton btnStartGame = new JButton("Start New Game");
         btnStartGame.addActionListener(e -> {
             MainFrame.takePlayerName();
-            System.out.println("Start New Game clicked");
         });
         add(btnStartGame);
 
         // 3) Game History button
         JButton btnHistory = new JButton("Game History");
         btnHistory.addActionListener(e -> {
-            System.out.println("Game History clicked");
             // Show game history or do something similar
         });
         add(btnHistory);
@@ -58,7 +56,6 @@ public class MenuPanel extends JPanel {
         // 4) Settings button
         JButton btnSettings = new JButton("Settings");
         btnSettings.addActionListener(e -> {
-            System.out.println("Settings clicked");
             // Show or switch to a settings panel
         });
         add(btnSettings);
@@ -66,7 +63,6 @@ public class MenuPanel extends JPanel {
         // 5) Exit button
         JButton btnExit = new JButton("Exit");
         btnExit.addActionListener(e -> {
-            System.out.println("Exit clicked");
             System.exit(0);
         });
         add(btnExit);

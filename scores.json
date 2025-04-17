@@ -1,174 +1,18 @@
 {
-  "hh" : {
-    "name" : "hh",
-    "score" : 55
+  "dd" : {
+    "name" : "dd",
+    "score" : 31
   },
   "ll" : {
     "name" : "ll",
-    "score" : 62
-  },
-  "ff" : {
-    "name" : "ff",
-    "score" : 24
-  },
-  "dd" : {
-    "name" : "dd",
-    "score" : 47
-  },
-  "bb" : {
-    "name" : "bb",
-    "score" : 45
-  },
-  "22" : {
-    "name" : "22",
-    "score" : 13
-  },
-  "jj" : {
-    "name" : "jj",
-    "score" : 1
-  },
-  "vv" : {
-    "name" : "vv",
-    "score" : 3
-  },
-  "tt" : {
-    "name" : "tt",
-    "score" : 14
-  },
-  "rr" : {
-    "name" : "rr",
-    "score" : 10
-  },
-  "zz" : {
-    "name" : "zz",
-    "score" : 1
-  },
-  "xx" : {
-    "name" : "xx",
-    "score" : 21
-  },
-  "fg" : {
-    "name" : "fg",
-    "score" : 4
-  },
-  "r4" : {
-    "name" : "r4",
-    "score" : 8
-  },
-  "jm" : {
-    "name" : "jm",
-    "score" : 13
-  },
-  "xdsd" : {
-    "name" : "xdsd",
-    "score" : 1
-  },
-  "ali" : {
-    "name" : "ali",
-    "score" : 17
-  },
-  "ee" : {
-    "name" : "ee",
-    "score" : 40
-  },
-  "ss" : {
-    "name" : "ss",
-    "score" : 45
-  },
-  "cc" : {
-    "name" : "cc",
-    "score" : 4
-  },
-  "aa" : {
-    "name" : "aa",
-    "score" : 3
-  },
-  "gg" : {
-    "name" : "gg",
-    "score" : 17
-  },
-  "ww" : {
-    "name" : "ww",
-    "score" : 1
-  },
-  "uu" : {
-    "name" : "uu",
-    "score" : 22
-  },
-  "yy" : {
-    "name" : "yy",
     "score" : 6
   },
-  ";;" : {
-    "name" : ";;",
-    "score" : 44
-  },
-  "c" : {
-    "name" : "c",
-    "score" : 3
-  },
-  "d" : {
-    "name" : "d",
-    "score" : 9
-  },
-  "f" : {
-    "name" : "f",
-    "score" : 10
-  },
-  "g" : {
-    "name" : "g",
-    "score" : 58
-  },
-  "'" : {
-    "name" : "'",
-    "score" : 119
-  },
-  "h" : {
-    "name" : "h",
-    "score" : 5
-  },
-  "j" : {
-    "name" : "j",
+  "aaaaaasd" : {
+    "name" : "aaaaaasd",
     "score" : 1
   },
-  "k" : {
-    "name" : "k",
-    "score" : 52
-  },
-  "l" : {
-    "name" : "l",
-    "score" : 48
-  },
-  "ssxs" : {
-    "name" : "ssxs",
-    "score" : 23
-  },
-  "ffff" : {
-    "name" : "ffff",
-    "score" : 419
-  },
-  "as" : {
-    "name" : "as",
-    "score" : 26
-  },
-  "s" : {
-    "name" : "s",
-    "score" : 14
-  },
-  "x" : {
-    "name" : "x",
-    "score" : 9
-  },
-  "gug" : {
-    "name" : "gug",
-    "score" : 35
-  },
-  ";" : {
-    "name" : ";",
-    "score" : 29
-  },
-  "aki" : {
-    "name" : "aki",
+  "Mohammad" : {
+    "name" : "Mohammad",
     "score" : 16
   }
 }

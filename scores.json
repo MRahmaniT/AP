@@ -29,7 +29,7 @@
   },
   "sss" : {
     "name" : "sss",
-    "score" : 3
+    "score" : 13
   },
   "sdsd" : {
     "name" : "sdsd",
@@ -79,6 +79,10 @@
     "name" : "cd",
     "score" : 1
   },
+  "a" : {
+    "name" : "a",
+    "score" : 11
+  },
   "d" : {
     "name" : "d",
     "score" : 72
@@ -94,6 +98,10 @@
   "regfddg" : {
     "name" : "regfddg",
     "score" : 27
+  },
+  "klkl" : {
+    "name" : "klkl",
+    "score" : 26
   },
   "s" : {
     "name" : "s",

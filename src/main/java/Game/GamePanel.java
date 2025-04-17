@@ -48,6 +48,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private int bestScore;
     private int scoreCounter = 0;
     private long startScoreCounter = 0;
+    private int deltaTimeStart;
+    private int deltaTimeStop;
+    private int deltaTime = 0;
     //Game
     private boolean firstEnter = true;
     private boolean gameOver = false;
@@ -102,21 +105,19 @@ public class GamePanel extends JPanel implements ActionListener {
                 switch (e.getKeyChar()){
                     case 'a':
                         shapes.get(2).rotate(-1);
-                        Timer rightRotateTimer = new Timer(10, new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                shapes.get(2).rotate(-1);
-                            }
-                        });
                         break;
                     case 'd':
                         shapes.get(2).rotate(1);
                         break;
                     case KeyEvent.VK_ESCAPE:
                         timer.stop();
+                        deltaTimeStart = (int) (System.currentTimeMillis());
                         break;
                     case KeyEvent.VK_SPACE:
+                        deltaTimeStop = (int) (System.currentTimeMillis());
+                        deltaTime = deltaTime + (deltaTimeStop - deltaTimeStart)/1000;
                         timer.restart();
+                        break;
                 }
             }
 
@@ -179,7 +180,9 @@ public class GamePanel extends JPanel implements ActionListener {
                 startScoreCounter = System.currentTimeMillis();
                 firstEnter = false;
             }
-            scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
+
+            scoreCounter = ((int) (System.currentTimeMillis() - startScoreCounter)/1000) - deltaTime;
+
             whoIsPlaying.setScore(scoreCounter);
             if(SettingPanel.saveHistory){
                 history = new History(scoreCounter, now);

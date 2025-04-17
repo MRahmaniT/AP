@@ -5,7 +5,7 @@
   },
   "dd" : {
     "name" : "dd",
-    "score" : 29
+    "score" : 38
   },
   "ff" : {
     "name" : "ff",
@@ -73,6 +73,10 @@
   },
   "SS" : {
     "name" : "SS",
+    "score" : 2
+  },
+  "ww" : {
+    "name" : "ww",
     "score" : 2
   },
   "cd" : {

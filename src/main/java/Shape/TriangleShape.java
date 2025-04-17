@@ -77,8 +77,7 @@ public class TriangleShape implements GameShape {
 
     @Override
     public void rotate(int i) {
-
-        rotation += 60*i;
+        rotation += i*60;
         if (rotation >= 360f) {
             rotation -= 360f;
         }

@@ -5,15 +5,19 @@ import java.awt.*;
 import Game.GamePanel;
 import Game.GameOverPanel;
 import Menu.MenuPanel;
+import Music.SoundPlayer;
 import Player.PlayerPanel;
 import Data.DataManager;
 import Data.HistoryPanel;
+import Setting.SettingPanel;
 
 public class MainFrame extends JFrame {
     private static CardLayout cardLayout;
     private static JPanel mainPanel;
 
     //Panels
+    private static SettingPanel settingPanel;
+    private static SoundPlayer musicPlayer;
     private DataManager dataManager = new DataManager();
     private MenuPanel menuPanel;
     private static GamePanel gamePanel;
@@ -23,11 +27,16 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         cardLayout = new CardLayout();
-        mainPanel = new JPanel(cardLayout); // set the CardLayout
+        mainPanel = new JPanel(cardLayout);
+
+        //Music
+        musicPlayer = new SoundPlayer();
+        if (SettingPanel.playSound){musicPlayer.playMusic("music.wav");}
 
         // Create or instantiate your cards
         menuPanel = new MenuPanel(dataManager);
         historyPanel = new HistoryPanel(dataManager);
+        settingPanel = new SettingPanel();
         gamePanel = new GamePanel();
         gameOverPanel = new GameOverPanel();
         playerPanel = new PlayerPanel();
@@ -35,6 +44,7 @@ public class MainFrame extends JFrame {
         // Add them with identifying names
         mainPanel.add(menuPanel, "Menu");
         mainPanel.add(historyPanel, "History");
+        mainPanel.add(settingPanel, "Setting");
         mainPanel.add(gamePanel, "Game");
         mainPanel.add(gameOverPanel, "GameOver");
         mainPanel.add(playerPanel, "Name");
@@ -55,6 +65,9 @@ public class MainFrame extends JFrame {
     // A method to switch to the Game panel
     public static void showMenu() {
         cardLayout.show(mainPanel, "Menu");
+    }
+    public static void showSetting() {
+        cardLayout.show(mainPanel, "Setting");
     }
     public static void showGame() {
         gamePanel = new GamePanel();

@@ -16,6 +16,7 @@ public class HistoryPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         //Best score at the top
+        dataManager.loadFile();
         Person bestPlayer = dataManager.getBestPlayer();
         String bestText = (bestPlayer != null)
                 ? "🏆 Best Player: " + bestPlayer.getName() + " — " + bestPlayer.getScore()
@@ -30,7 +31,7 @@ public class HistoryPanel extends JPanel {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
 
-        for (Map.Entry<String, Integer> entry : dataManager.getGameHistory().entrySet()) {
+        for (Map.Entry<String, String> entry : dataManager.getGameHistory().entrySet()) {
             JLabel playerLabel = new JLabel(entry.getKey() + " — " + entry.getValue());
             playerLabel.setFont(new Font("Arial", Font.PLAIN, 16));
             playerLabel.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));

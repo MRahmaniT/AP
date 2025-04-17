@@ -1,5 +1,6 @@
 package Game;
 
+import Data.History;
 import Player.Person;
 import Shape.GameShape;
 import Shape.RotatingBackground;
@@ -14,8 +15,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +31,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private HexagonShapeMode2 hs2;
     //Data
     private final DataManager dataManager = new DataManager();
+    private History history;
+    private String now;
     //Player
     private final PlayerPanel playerPanel = new PlayerPanel();
     private final Map<String, Person> players;
@@ -117,19 +121,22 @@ public class GamePanel extends JPanel implements ActionListener {
             gameOver = true;
         }
         if (gameOver){
-            dataManager.addGameHistory(whoIsPlaying.getName(), scoreCounter);
+            history = new History(scoreCounter, now);
+            dataManager.addGameHistory(whoIsPlaying.getName(), history);
             dataManager.saveFile();
             timer.stop();
             MainFrame.showGameOver();
         }
         if (whoIsPlaying != null) {
             if (firstEnter) {
+                now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                 startScoreCounter = System.currentTimeMillis();
                 firstEnter = false;
             }
             scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
             whoIsPlaying.setScore(scoreCounter);
-            dataManager.addGameHistory(whoIsPlaying.getName(), scoreCounter);
+            history = new History(scoreCounter, now);
+            dataManager.addGameHistory(whoIsPlaying.getName(), history);
         }
         if (scoreCounter > bestScore) {
             dataManager.setBestScore(scoreCounter);

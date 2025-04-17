@@ -49,14 +49,14 @@ public class MenuPanel extends JPanel {
         // 3) Game History button
         JButton btnHistory = new JButton("Game History");
         btnHistory.addActionListener(e -> {
-            // Show game history or do something similar
+            MainFrame.showHistory();
         });
         add(btnHistory);
 
         // 4) Settings button
         JButton btnSettings = new JButton("Settings");
         btnSettings.addActionListener(e -> {
-            // Show or switch to a settings panel
+            MainFrame.showSetting();
         });
         add(btnSettings);
 

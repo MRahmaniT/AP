@@ -13,20 +13,20 @@ public class DataManager {
     private static final String PLAYERS_FILE_NAME = "scores.json";
     private static final String HISTORY_FILE_NAME = "history.json";
     private final Map<String, Person> players = new HashMap<>();
-    private final Map<String, Integer> gameHistory = new HashMap<>();
+    private final Map<String, String> gameHistory = new HashMap<>();
     private static int bestScore;
 
     // Setters
     public void addPerson(Person person) {
         players.put(person.getName(), person);
     }
-    public void addGameHistory(String name, int score){gameHistory.put(name, score); }
+    public void addGameHistory(String name, History history){gameHistory.put(name, history.getHistory()); }
     public void setBestScore(int bestScore) { DataManager.bestScore = bestScore; }
 
     // Getters
     public Person getPerson(String name) { return players.get(name); }
     public Map<String, Person> getAllPlayers() { return players; }
-    public Map<String, Integer> getGameHistory() { return gameHistory; }
+    public Map<String, String> getGameHistory() { return gameHistory; }
     public int getBestScore() {
         bestScore = 0;
         for (Person p : players.values()){
@@ -66,9 +66,9 @@ public class DataManager {
             for (Person p : players.values()){
                 addPerson(p);
             }
-            Map<String, Integer> loaded2 = mapper2.readValue(
+            Map<String, String> loaded2 = mapper2.readValue(
                     file2,
-                    new TypeReference<Map<String, Integer>>() {}
+                    new TypeReference<Map<String, String>>() {}
             );
             gameHistory.clear();
             gameHistory.putAll(loaded2);

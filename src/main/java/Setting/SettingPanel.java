@@ -1,5 +1,7 @@
 package Setting;
 
+import Data.DataManager;
+import Menu.MenuPanel;
 import Music.SoundPlayer;
 import Main.MainFrame;
 
@@ -8,6 +10,7 @@ import java.awt.*;
 
 public class SettingPanel extends JPanel {
     SoundPlayer soundPlayer = new SoundPlayer();
+    DataManager dataManager = new DataManager();
     public static boolean playSound = true;
     public SettingPanel() {
 
@@ -33,11 +36,11 @@ public class SettingPanel extends JPanel {
         add(OffButton, gbc);
 
         //Title for history
-        JLabel historylable = new JLabel("Save History");
+        JLabel historyLable = new JLabel("Save History");
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
-        add(historylable, gbc);
+        add(historyLable, gbc);
 
         JButton historyOnButton = new JButton("On");
         gbc.gridy = 3;
@@ -65,7 +68,7 @@ public class SettingPanel extends JPanel {
 
     private void handleOn() {
         if (!playSound){
-            soundPlayer.playMusic("Music");
+            soundPlayer.playMusic("music");
             playSound = true;
         }
     }
@@ -79,7 +82,7 @@ public class SettingPanel extends JPanel {
 
     private void handleHistoryOn() {
         if (!playSound){
-            soundPlayer.playMusic("Music");
+            soundPlayer.playMusic("music");
             playSound = true;
         }
     }

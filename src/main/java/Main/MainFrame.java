@@ -13,7 +13,7 @@ import Setting.SettingPanel;
 
 public class MainFrame extends JFrame {
     private static CardLayout cardLayout;
-    private static JPanel mainPanel;
+    public static JPanel mainPanel;
 
     //Panels
     private static SettingPanel settingPanel;
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
 
         //Music
         musicPlayer = new SoundPlayer();
-        if (SettingPanel.playSound){musicPlayer.playMusic("music.wav");}
+        //if (SettingPanel.playSound){musicPlayer.playMusic("music.wav");}
 
         // Create or instantiate your cards
         menuPanel = new MenuPanel(dataManager);

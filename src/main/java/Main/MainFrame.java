@@ -70,8 +70,8 @@ public class MainFrame extends JFrame {
         cardLayout.show(mainPanel, "Setting");
     }
     public static void showGame() {
-        gamePanel = new GamePanel();
         mainPanel.remove(gamePanel);
+        gamePanel = new GamePanel();
         mainPanel.add(gamePanel, "Game");
         mainPanel.revalidate();
         mainPanel.repaint();
@@ -79,8 +79,8 @@ public class MainFrame extends JFrame {
     }
     public static void showHistory() {
         DataManager dataManager = new DataManager();
-        historyPanel = new HistoryPanel(dataManager);
         mainPanel.remove(historyPanel);
+        historyPanel = new HistoryPanel(dataManager);
         mainPanel.add(historyPanel, "History");
         mainPanel.revalidate();
         mainPanel.repaint();
@@ -91,7 +91,11 @@ public class MainFrame extends JFrame {
         cardLayout.show(mainPanel, "GameOver");
     }
     public static void takePlayerName() {
+        mainPanel.remove(playerPanel);
         playerPanel = new PlayerPanel();
+        mainPanel.add(playerPanel, "Name");
+        mainPanel.revalidate();
+        mainPanel.repaint();
         cardLayout.show(mainPanel, "Name");
     }
 }

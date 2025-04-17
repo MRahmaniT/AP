@@ -1,17 +1,15 @@
 package Setting;
 
-import Data.DataManager;
-import Menu.MenuPanel;
-import Music.SoundPlayer;
 import Main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class SettingPanel extends JPanel {
-    SoundPlayer soundPlayer = new SoundPlayer();
-    DataManager dataManager = new DataManager();
     public static boolean playSound = true;
+    public static boolean saveHistory = true;
+    private JLabel historyLabel;
+    private JLabel musicLabel;
     public SettingPanel() {
 
         setLayout(new GridBagLayout());
@@ -19,11 +17,12 @@ public class SettingPanel extends JPanel {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         //Title for music
-        JLabel promptLabel = new JLabel("Music");
+        musicLabel = new JLabel("Music");
+        musicLabel.setForeground(Color.GREEN);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
-        add(promptLabel, gbc);
+        add(musicLabel, gbc);
 
         JButton OnButton = new JButton("On");
         gbc.gridy = 1;
@@ -36,11 +35,12 @@ public class SettingPanel extends JPanel {
         add(OffButton, gbc);
 
         //Title for history
-        JLabel historyLable = new JLabel("Save History");
+        historyLabel = new JLabel("Save History");
+        historyLabel.setForeground(Color.GREEN);
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
-        add(historyLable, gbc);
+        add(historyLabel, gbc);
 
         JButton historyOnButton = new JButton("On");
         gbc.gridy = 3;
@@ -68,29 +68,31 @@ public class SettingPanel extends JPanel {
 
     private void handleOn() {
         if (!playSound){
-            soundPlayer.playMusic("music");
+            musicLabel.setForeground(Color.GREEN);
+            MainFrame.musicPlayer.playMusic("music.wav");
             playSound = true;
         }
     }
 
     private void handleOff() {
         if (playSound){
-            soundPlayer.stopMusic();
+            musicLabel.setForeground(Color.RED);
+            MainFrame.musicPlayer.stopMusic();
             playSound = false;
         }
     }
 
     private void handleHistoryOn() {
-        if (!playSound){
-            soundPlayer.playMusic("music");
-            playSound = true;
+        if (!saveHistory){
+            historyLabel.setForeground(Color.GREEN);
+            saveHistory = true;
         }
     }
 
     private void handleHistoryOff() {
-        if (playSound){
-            soundPlayer.stopMusic();
-            playSound = false;
+        if (saveHistory){
+            historyLabel.setForeground(Color.RED);
+            saveHistory = false;
         }
     }
 

@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 
     //Panels
     private static SettingPanel settingPanel;
-    private static SoundPlayer musicPlayer;
+    public static SoundPlayer musicPlayer;
     private DataManager dataManager = new DataManager();
     private MenuPanel menuPanel;
     private static GamePanel gamePanel;
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
 
         //Music
         musicPlayer = new SoundPlayer();
-        //if (SettingPanel.playSound){musicPlayer.playMusic("music.wav");}
+        if (SettingPanel.playSound){musicPlayer.playMusic("music.wav");}
 
         // Create or instantiate your cards
         menuPanel = new MenuPanel(dataManager);

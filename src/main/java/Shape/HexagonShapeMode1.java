@@ -9,6 +9,9 @@ import java.util.random.RandomGenerator;
 
 public class HexagonShapeMode1 implements GameShape {
 
+    private Path2D.Float hexagon;
+    private Path2D.Float path = new Path2D.Float();
+
     // Position of the hexagon’s center
     private float x, y;
 
@@ -63,7 +66,7 @@ public class HexagonShapeMode1 implements GameShape {
         g2d.rotate(Math.toRadians(rotation));
 
         // Create a path for the hexagon
-        Path2D.Float hexagon = new Path2D.Float();
+        hexagon = new Path2D.Float();
         for (int i = 0; i < 6; i++) {
             Path2D.Float part = new Path2D.Float();
             double angle = Math.toRadians(60 * i);
@@ -84,7 +87,7 @@ public class HexagonShapeMode1 implements GameShape {
                 hexagon.append(part,false);
             }
         }
-
+        path = hexagon;
         // Choose a color and draw
         g2d.setColor(Color.BLUE);
         g2d.fill(hexagon);
@@ -96,5 +99,10 @@ public class HexagonShapeMode1 implements GameShape {
     @Override
     public float getRadius() {
         return this.radius;
+    }
+
+    @Override
+    public Path2D.Float getPath() {
+        return this.path;
     }
 }

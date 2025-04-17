@@ -1,13 +1,12 @@
 package Shape;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Path2D;
-import java.util.ArrayList;
 
-public class HexagonShape implements GameShape {
+public class TriangleShape implements GameShape {
 
-    private Path2D.Float hexagon;
+    private final Path2D.Float triangle = new Path2D.Float();;
+
     // Position of the hexagon’s center
     private float x, y;
 
@@ -18,12 +17,12 @@ public class HexagonShape implements GameShape {
     private float rotation;
     private float rotationSpeed;
 
-    public HexagonShape(float x, float y, float radius, float rotationSpeed) {
+    public TriangleShape(float x, float y, float radius, float rotationSpeed) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.rotationSpeed = rotationSpeed;
-        this.rotation = 0f;
+        this.rotation = -30f;
     }
 
     public void increaseRotationSpeed(float rotationSpeed) {
@@ -49,24 +48,24 @@ public class HexagonShape implements GameShape {
         g2d.translate(x, y);
         g2d.rotate(Math.toRadians(rotation));
 
-        // Create a path for the hexagon
-        hexagon = new Path2D.Float();
-        for (int i = 0; i < 6; i++) {
-            double angle = Math.toRadians(60 * i);
-            float vx = (float)(radius * Math.cos(angle));
-            float vy = (float)(radius * Math.sin(angle));
-
-            if (i == 0) {
-                hexagon.moveTo(vx, vy);
-            } else {
-                hexagon.lineTo(vx, vy);
-            }
-        }
-        hexagon.closePath();
+        // Create a path for the triangle
+        double angle1 = Math.toRadians(-12);
+        float x1 = (float)(radius * Math.cos(angle1));
+        float y1 = (float)(radius * Math.sin(angle1));
+        triangle.moveTo(x1, y1);
+        double angle2 = Math.toRadians(0);
+        float x2 = (float)((radius+8) * Math.cos(angle2));
+        float y2 = (float)((radius+8) * Math.sin(angle2));
+        triangle.lineTo(x2, y2);
+        double angle3 = Math.toRadians(12);
+        float x3 = (float)(radius * Math.cos(angle3));
+        float y3 = (float)(radius * Math.sin(angle3));
+        triangle.lineTo(x3, y3);
+        triangle.closePath();
 
         // Choose a color and draw
-        g2d.setColor(Color.BLUE);
-        g2d.fill(hexagon);
+        g2d.setColor(Color.BLACK);
+        g2d.fill(triangle);
 
         // Restore the original transform so other drawings aren’t affected
         g2d.setTransform(originalTransform);
@@ -79,6 +78,6 @@ public class HexagonShape implements GameShape {
 
     @Override
     public Path2D.Float getPath() {
-        return hexagon;
+        return this.triangle;
     }
 }

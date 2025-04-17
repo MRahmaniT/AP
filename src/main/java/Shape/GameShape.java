@@ -1,14 +1,15 @@
 package Shape;
 
 import java.awt.Graphics2D;
+import java.awt.geom.Path2D;
 
 public interface GameShape {
 
-    //Update every frame.
     void update();
 
-    //Draw the shape using the provided Graphics2D context.
     void draw(Graphics2D g2d);
 
     float getRadius();
+
+    Path2D.Float getPath();
 }

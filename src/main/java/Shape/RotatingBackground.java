@@ -86,4 +86,9 @@ public class RotatingBackground implements GameShape {
     public float getRadius() {
         return this.radius;
     }
+    @Override
+    public Path2D.Float getPath() {
+        Path2D.Float slice = null;
+        return slice;
+    }
 }

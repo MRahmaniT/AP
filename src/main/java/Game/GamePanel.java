@@ -2,11 +2,14 @@ package Game;
 
 import Data.History;
 import Player.Person;
+import Setting.SettingPanel;
 import Shape.GameShape;
 import Shape.RotatingBackground;
 import Shape.HexagonShape;
+import Shape.TriangleShape;
 import Shape.HexagonShapeMode1;
 import Shape.HexagonShapeMode2;
+import Shape.CheckCollision;
 import Data.DataManager;
 import Player.PlayerPanel;
 import Main.MainFrame;
@@ -70,9 +73,12 @@ public class GamePanel extends JPanel implements ActionListener {
         // Create a rotating background with a large radius (say 1000) and 1 degree per frame
         RotatingBackground bg = new RotatingBackground(1000, 0.03f);
         HexagonShape hs = new HexagonShape(0, 0,20,0.03f);
+        TriangleShape ta = new TriangleShape(0, 0,20    ,0.03f);
 
         shapes.add(bg);
         shapes.add(hs);
+        shapes.add(ta);
+
         for(int i = 1; i < 10000; i++){
             int randomInt = (int)(Math.random() * 2);
             if(randomInt == 1){
@@ -102,11 +108,12 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Now draw each shape
         shapesToDraw.clear();
-        for (int i = 1; i < 5; i++){
+        for (int i = 1; i < 6; i++){
             shapesToDraw.add(shapes.get(i));
         }
         shapes.get(0).draw(g2d);
         shapes.get(1).draw(g2d);
+        shapes.get(2).draw(g2d);
         for (GameShape shape : shapesToDraw) {
             shape.draw(g2d);
         }
@@ -117,12 +124,14 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dataManager.loadFile();
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
-        if(scoreCounter>30){
+        if(CheckCollision.checkCollision(shapes.get(2), shapes.get(3))){
             gameOver = true;
         }
         if (gameOver){
-            history = new History(scoreCounter, now);
-            dataManager.addGameHistory(whoIsPlaying.getName(), history);
+            if(SettingPanel.saveHistory){
+                history = new History(scoreCounter, now);
+                dataManager.addGameHistory(whoIsPlaying.getName(), history);
+            }
             dataManager.saveFile();
             timer.stop();
             MainFrame.showGameOver();
@@ -135,8 +144,10 @@ public class GamePanel extends JPanel implements ActionListener {
             }
             scoreCounter = (int) (System.currentTimeMillis() - startScoreCounter)/1000;
             whoIsPlaying.setScore(scoreCounter);
-            history = new History(scoreCounter, now);
-            dataManager.addGameHistory(whoIsPlaying.getName(), history);
+            if(SettingPanel.saveHistory){
+                history = new History(scoreCounter, now);
+                dataManager.addGameHistory(whoIsPlaying.getName(), history);
+            }
         }
         if (scoreCounter > bestScore) {
             dataManager.setBestScore(scoreCounter);

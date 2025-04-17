@@ -145,15 +145,19 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Now draw each shape
         shapesToDraw.clear();
-        for (int i = 1; i < 6; i++){
+        for (int i = 3; i < 8; i++){
             shapesToDraw.add(shapes.get(i));
         }
         shapes.get(0).draw(g2d);
         shapes.get(1).draw(g2d);
         shapes.get(2).draw(g2d);
+
         for (GameShape shape : shapesToDraw) {
             shape.draw(g2d);
         }
+        g2d.setColor(Color.WHITE);
+        g2d.draw(shapes.get(2).getPath());
+        g2d.draw(shapes.get(1).getPath());
         g2d.dispose();
     }
 
@@ -161,9 +165,6 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dataManager.loadFile();
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
-        if(CheckCollision.checkCollision(shapes.get(2), shapes.get(3))){
-            gameOver = true;
-        }
         if (gameOver){
             if(SettingPanel.saveHistory){
                 history = new History(scoreCounter, now);
@@ -175,6 +176,11 @@ public class GamePanel extends JPanel implements ActionListener {
             MainFrame.showGameOver();
         }
         if (whoIsPlaying != null) {
+            if (shapes.get(3).getRadius()<30){
+                if(CheckCollision.checkCollision(shapes.get(2), shapes.get(3))){
+                    gameOver = true;
+                }
+            }
             if (firstEnter) {
                 now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                 startScoreCounter = System.currentTimeMillis();
@@ -217,10 +223,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 removed++;
 
                 //Prevention of repetetion
-                int randomRemove = (int) (Math.random()*1000);
+                /*int randomRemove = (int) (Math.random()*1000);
                 GameShape shape2 = shapes.get(randomRemove+10);
                 shapes.remove(shape2);
-                shapes.add(shape2);
+                shapes.add(shape2);*/
             }
         }
         repaint();

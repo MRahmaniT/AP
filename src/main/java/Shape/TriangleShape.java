@@ -5,7 +5,7 @@ import java.awt.geom.Path2D;
 
 public class TriangleShape implements GameShape {
 
-    private final Path2D.Float triangle = new Path2D.Float();
+    private Path2D.Float triangle;
 
     // Position of the hexagon’s center
     private float x, y;
@@ -50,26 +50,10 @@ public class TriangleShape implements GameShape {
 
         // Translate and rotate the Graphics2D context
         g2d.translate(x, y);
-        g2d.rotate(Math.toRadians(rotation));
-
-        // Create a path for the triangle
-        double angle1 = Math.toRadians(-12);
-        float x1 = (float)(radius * Math.cos(angle1));
-        float y1 = (float)(radius * Math.sin(angle1));
-        triangle.moveTo(x1, y1);
-        double angle2 = Math.toRadians(0);
-        float x2 = (float)((radius+8) * Math.cos(angle2));
-        float y2 = (float)((radius+8) * Math.sin(angle2));
-        triangle.lineTo(x2, y2);
-        double angle3 = Math.toRadians(12);
-        float x3 = (float)(radius * Math.cos(angle3));
-        float y3 = (float)(radius * Math.sin(angle3));
-        triangle.lineTo(x3, y3);
-        triangle.closePath();
 
         // Choose a color and draw
         g2d.setColor(Color.BLACK);
-        g2d.fill(triangle);
+        g2d.fill(getPath());
 
         // Restore the original transform so other drawings aren’t affected
         g2d.setTransform(originalTransform);
@@ -90,6 +74,25 @@ public class TriangleShape implements GameShape {
 
     @Override
     public Path2D.Float getPath() {
-        return this.triangle;
+        Path2D.Float triangle = new Path2D.Float();
+
+        double angle1 = Math.toRadians(-12 + rotation);
+        float x1 = (float)(radius * Math.cos(angle1)) + x;
+        float y1 = (float)(radius * Math.sin(angle1)) + y;
+
+        double angle2 = Math.toRadians(0 + rotation);
+        float x2 = (float)((radius + 8) * Math.cos(angle2)) + x;
+        float y2 = (float)((radius + 8) * Math.sin(angle2)) + y;
+
+        double angle3 = Math.toRadians(12 + rotation);
+        float x3 = (float)(radius * Math.cos(angle3)) + x;
+        float y3 = (float)(radius * Math.sin(angle3)) + y;
+
+        triangle.moveTo(x1, y1);
+        triangle.lineTo(x2, y2);
+        triangle.lineTo(x3, y3);
+        triangle.closePath();
+
+        return triangle;
     }
 }

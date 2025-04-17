@@ -1,6 +1,7 @@
 package Shape;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
 public class HexagonShapeMode2 implements GameShape {
@@ -59,13 +60,12 @@ public class HexagonShapeMode2 implements GameShape {
 
         // Translate and rotate the Graphics2D context
         g2d.translate(x, y);
-        g2d.rotate(Math.toRadians(rotation));
 
         // Create a path for the hexagon
         hexagon = new Path2D.Float();
         for (int i = 0; i < 6; i++) {
             Path2D.Float part = new Path2D.Float();
-            double angle = Math.toRadians(60 * i);
+            double angle = Math.toRadians(60 * i + rotation);
             float vx1 = (float)(radius * Math.cos(angle));
             float vy1 = (float)(radius * Math.sin(angle));
             float vx2 = (float)((radius + 10f) * Math.cos(angle));
@@ -84,13 +84,14 @@ public class HexagonShapeMode2 implements GameShape {
             }
         }
 
-        path = hexagon;
         // Choose a color and draw
         g2d.setColor(Color.BLUE);
         g2d.fill(hexagon);
 
         // Restore the original transform so other drawings aren’t affected
         g2d.setTransform(originalTransform);
+
+        path = hexagon;
     }
 
     public void rotate(int i) {
@@ -108,6 +109,6 @@ public class HexagonShapeMode2 implements GameShape {
 
     @Override
     public Path2D.Float getPath() {
-        return this.path;
+        return path;
     }
 }

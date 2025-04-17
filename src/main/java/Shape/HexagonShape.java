@@ -46,12 +46,11 @@ public class HexagonShape implements GameShape {
 
         // Translate and rotate the Graphics2D context
         g2d.translate(x, y);
-        g2d.rotate(Math.toRadians(rotation));
 
         // Create a path for the hexagon
         hexagon = new Path2D.Float();
         for (int i = 0; i < 6; i++) {
-            double angle = Math.toRadians(60 * i);
+            double angle = Math.toRadians(60 * i + rotation);
             float vx = (float)(radius * Math.cos(angle));
             float vy = (float)(radius * Math.sin(angle));
 

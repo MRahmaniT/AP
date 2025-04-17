@@ -19,6 +19,10 @@
     "name" : "dad",
     "score" : 4
   },
+  "asdass" : {
+    "name" : "asdass",
+    "score" : 36
+  },
   "fcf" : {
     "name" : "fcf",
     "score" : 15
@@ -26,6 +30,10 @@
   "gfgf" : {
     "name" : "gfgf",
     "score" : 15
+  },
+  "sd" : {
+    "name" : "sd",
+    "score" : 107
   },
   "sss" : {
     "name" : "sss",
@@ -61,7 +69,7 @@
   },
   "ss" : {
     "name" : "ss",
-    "score" : 34
+    "score" : 60
   },
   "ee" : {
     "name" : "ee",
@@ -79,6 +87,14 @@
     "name" : "ww",
     "score" : 2
   },
+  "gg" : {
+    "name" : "gg",
+    "score" : 18
+  },
+  "yy" : {
+    "name" : "yy",
+    "score" : 16
+  },
   "cd" : {
     "name" : "cd",
     "score" : 1
@@ -90,6 +106,10 @@
   "d" : {
     "name" : "d",
     "score" : 72
+  },
+  "ddd" : {
+    "name" : "ddd",
+    "score" : 15
   },
   "j" : {
     "name" : "j",
@@ -107,13 +127,25 @@
     "name" : "klkl",
     "score" : 26
   },
+  "sda" : {
+    "name" : "sda",
+    "score" : 59
+  },
   "s" : {
     "name" : "s",
     "score" : 37
   },
+  "asd" : {
+    "name" : "asd",
+    "score" : 16
+  },
   "dsd" : {
     "name" : "dsd",
     "score" : 17
+  },
+  "ssad" : {
+    "name" : "ssad",
+    "score" : 25
   },
   "da" : {
     "name" : "da",

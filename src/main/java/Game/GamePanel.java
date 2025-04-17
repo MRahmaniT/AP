@@ -8,31 +8,40 @@ import Shape.HexagonShapeMode1;
 import Shape.HexagonShapeMode2;
 import Data.DataManager;
 import Player.PlayerPanel;
+import Main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class GamePanel extends JPanel implements ActionListener {
+    //Frame rate
     private Timer timer = new Timer(10,this);
+    //Shapes
     private final List<GameShape> shapes = new ArrayList<>();
     private final List<GameShape> shapesToDraw = new ArrayList<>();
     private HexagonShapeMode1 hs1;
     private HexagonShapeMode2 hs2;
+    //Data
     private final DataManager dataManager = new DataManager();
+    //Player
     private final PlayerPanel playerPanel = new PlayerPanel();
     private final Map<String, Person> players;
     private Person whoIsPlaying;
+    //Score
     private JLabel bestScoreLabel;
     private JLabel yourScoreLabel;
     private int bestScore;
     private int scoreCounter = 0;
     private long startScoreCounter = 0;
+    //Game
     private boolean firstEnter = true;
+    private boolean gameOver = false;
 
     public GamePanel() {
         setLayout(new BorderLayout());
@@ -60,7 +69,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         shapes.add(bg);
         shapes.add(hs);
-        for(int i = 1; i < 2001; i++){
+        for(int i = 1; i < 100; i++){
             int randomInt = (int)(Math.random() * 2);
             if(randomInt == 1){
                 int randomInt1 = (int)(Math.random() * 6);
@@ -94,6 +103,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         shapes.get(0).draw(g2d);
         shapes.get(1).draw(g2d);
+        Collections.shuffle(shapesToDraw);
         for (GameShape shape : shapesToDraw) {
             shape.draw(g2d);
         }
@@ -104,6 +114,16 @@ public class GamePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dataManager.loadFile();
         whoIsPlaying = players.get(playerPanel.getWhoIsPlaying());
+        if(scoreCounter>10){
+            gameOver = true;
+        }
+        if (gameOver){
+            dataManager.addGameHistory(whoIsPlaying.getName(), scoreCounter);
+            dataManager.saveFile();
+            System.out.println(scoreCounter);
+            timer.stop();
+            MainFrame.showGameOver();
+        }
         if (whoIsPlaying != null) {
             if (firstEnter) {
                 startScoreCounter = System.currentTimeMillis();
@@ -122,7 +142,7 @@ public class GamePanel extends JPanel implements ActionListener {
         add(bestScoreLabel);
         dataManager.saveFile();
 
-        // Update each shape
+        // Update and remove each shape
         ArrayList<Integer> toRemove = new ArrayList<>();
         for (GameShape shape : shapes) {
             shape.update();
@@ -130,11 +150,12 @@ public class GamePanel extends JPanel implements ActionListener {
                 toRemove.add(shapes.indexOf(shape));
             }
         }
-
         int removed = 0;
         for (int i : toRemove) {
             if(shapes.get(i).getRadius()<20){
+                GameShape shape = shapes.get(i-removed);
                 shapes.remove(i-removed);
+                shapes.add(shape);
                 removed++;
             }
         }

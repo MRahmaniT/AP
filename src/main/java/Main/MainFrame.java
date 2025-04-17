@@ -3,6 +3,7 @@ package Main;
 import javax.swing.*;
 import java.awt.*;
 import Game.GamePanel;
+import Game.GameOverPanel;
 import Menu.MenuPanel;
 import Player.PlayerPanel;
 import Data.DataManager;
@@ -15,6 +16,7 @@ public class MainFrame extends JFrame {
     private DataManager dataManager = new DataManager();
     private MenuPanel menuPanel;
     private static GamePanel gamePanel;
+    private static GameOverPanel gameOverPanel;
     private static PlayerPanel playerPanel;
 
     public MainFrame() {
@@ -24,11 +26,13 @@ public class MainFrame extends JFrame {
         // Create or instantiate your cards
         menuPanel = new MenuPanel(dataManager);
         gamePanel = new GamePanel();
+        gameOverPanel = new GameOverPanel();
         playerPanel = new PlayerPanel();
 
         // Add them with identifying names
         mainPanel.add(menuPanel, "Menu");
         mainPanel.add(gamePanel, "Game");
+        mainPanel.add(gameOverPanel, "GameOver");
         mainPanel.add(playerPanel, "Name");
 
         // Add the mainPanel to the frame
@@ -51,6 +55,10 @@ public class MainFrame extends JFrame {
     public static void showGame() {
         gamePanel = new GamePanel();
         cardLayout.show(mainPanel, "Game");
+    }
+    public static void showGameOver() {
+        gameOverPanel = new GameOverPanel();
+        cardLayout.show(mainPanel, "GameOver");
     }
     public static void takePlayerName() {
         playerPanel = new PlayerPanel();

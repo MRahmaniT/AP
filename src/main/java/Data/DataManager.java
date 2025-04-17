@@ -12,18 +12,20 @@ import java.util.Map;
 public class DataManager {
     private static final String FILE_NAME = "scores.json";
     private final Map<String, Person> players = new HashMap<>();
+    private final Map<String, Integer> gameHistory = new HashMap<>();
     private static int bestScore;
 
     // Setters
     public void addPerson(Person person) {
         players.put(person.getName(), person);
     }
+    public void addGameHistory(String name, int score){gameHistory.put(name, score); }
     public void setBestScore(int bestScore) { DataManager.bestScore = bestScore; }
 
     // Getters
-    public Person getPerson(String name) {
-        return players.get(name);
-    }
+    public Person getPerson(String name) { return players.get(name); }
+    public Map<String, Person> getAllPlayers() { return players; }
+    public Map<String, Integer> getGameHistory() { return gameHistory; }
     public int getBestScore() {
         bestScore = 0;
         for (Person p : players.values()){
@@ -32,11 +34,6 @@ public class DataManager {
             }
         }
         return bestScore;
-    }
-
-    // Get all players
-    public Map<String, Person> getAllPlayers() {
-        return players;
     }
 
     // Load the map from JSON

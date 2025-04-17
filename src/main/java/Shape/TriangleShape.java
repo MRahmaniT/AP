@@ -25,6 +25,10 @@ public class TriangleShape implements GameShape {
         this.rotation = -30f;
     }
 
+    public void setRadius(float radius) {
+        this.radius = this.radius + radius;
+    }
+
     public void increaseRotationSpeed(float rotationSpeed) {
         this.rotationSpeed = this.rotationSpeed + rotationSpeed;
     }
@@ -69,6 +73,15 @@ public class TriangleShape implements GameShape {
 
         // Restore the original transform so other drawings aren’t affected
         g2d.setTransform(originalTransform);
+    }
+
+    @Override
+    public void rotate(int i) {
+
+        rotation += 60*i;
+        if (rotation >= 360f) {
+            rotation -= 360f;
+        }
     }
 
     @Override

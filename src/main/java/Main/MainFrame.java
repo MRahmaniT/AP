@@ -76,6 +76,7 @@ public class MainFrame extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
         cardLayout.show(mainPanel, "Game");
+        gamePanel.grabFocus();
     }
     public static void showHistory() {
         DataManager dataManager = new DataManager();

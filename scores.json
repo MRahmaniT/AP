@@ -1,23 +1,79 @@
 {
   "hh" : {
     "name" : "hh",
-    "score" : 8
+    "score" : 117
   },
   "dd" : {
     "name" : "dd",
     "score" : 29
   },
-  "ss" : {
-    "name" : "ss",
-    "score" : 34
-  },
   "ff" : {
     "name" : "ff",
     "score" : 15
   },
+  "DD" : {
+    "name" : "DD",
+    "score" : 6
+  },
+  "dad" : {
+    "name" : "dad",
+    "score" : 4
+  },
+  "fcf" : {
+    "name" : "fcf",
+    "score" : 15
+  },
+  "gfgf" : {
+    "name" : "gfgf",
+    "score" : 15
+  },
+  "sss" : {
+    "name" : "sss",
+    "score" : 3
+  },
+  "sdsd" : {
+    "name" : "sdsd",
+    "score" : 8
+  },
+  "sad" : {
+    "name" : "sad",
+    "score" : 4
+  },
+  "ere" : {
+    "name" : "ere",
+    "score" : 6
+  },
+  "adsd" : {
+    "name" : "adsd",
+    "score" : 13
+  },
+  "sadasd" : {
+    "name" : "sadasd",
+    "score" : 31
+  },
+  "ali" : {
+    "name" : "ali",
+    "score" : 23
+  },
+  "gf" : {
+    "name" : "gf",
+    "score" : 50
+  },
+  "ss" : {
+    "name" : "ss",
+    "score" : 34
+  },
   "ee" : {
     "name" : "ee",
     "score" : 23
+  },
+  "aa" : {
+    "name" : "aa",
+    "score" : 20
+  },
+  "SS" : {
+    "name" : "SS",
+    "score" : 2
   },
   "cd" : {
     "name" : "cd",
@@ -27,17 +83,13 @@
     "name" : "d",
     "score" : 72
   },
-  "fcf" : {
-    "name" : "fcf",
-    "score" : 15
-  },
   "j" : {
     "name" : "j",
     "score" : 6
   },
-  "gfgf" : {
-    "name" : "gfgf",
-    "score" : 15
+  "l" : {
+    "name" : "l",
+    "score" : 2
   },
   "regfddg" : {
     "name" : "regfddg",
@@ -45,26 +97,14 @@
   },
   "s" : {
     "name" : "s",
-    "score" : 30
+    "score" : 37
   },
   "dsd" : {
     "name" : "dsd",
     "score" : 17
   },
-  "sdsd" : {
-    "name" : "sdsd",
+  "da" : {
+    "name" : "da",
     "score" : 8
-  },
-  "ere" : {
-    "name" : "ere",
-    "score" : 6
-  },
-  "sadasd" : {
-    "name" : "sadasd",
-    "score" : 31
-  },
-  "ali" : {
-    "name" : "ali",
-    "score" : 23
   }
 }

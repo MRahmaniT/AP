@@ -3,7 +3,6 @@ package Shape;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
-import java.util.ArrayList;
 
 public class HexagonShape implements GameShape {
 
@@ -70,6 +69,14 @@ public class HexagonShape implements GameShape {
 
         // Restore the original transform so other drawings aren’t affected
         g2d.setTransform(originalTransform);
+    }
+
+    public void rotate(int i) {
+
+        rotation += 60;
+        if (rotation >= 360f) {
+            rotation -= 360f;
+        }
     }
 
     @Override

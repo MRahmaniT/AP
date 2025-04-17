@@ -18,6 +18,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -94,6 +96,40 @@ public class GamePanel extends JPanel implements ActionListener {
         }
 
         timer.start();
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                switch (e.getKeyChar()){
+                    case 'a':
+                        shapes.get(2).rotate(-1);
+                        Timer rightRotateTimer = new Timer(10, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                shapes.get(2).rotate(-1);
+                            }
+                        });
+                        break;
+                    case 'd':
+                        shapes.get(2).rotate(1);
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        timer.stop();
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        timer.restart();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
     }
 
     @Override

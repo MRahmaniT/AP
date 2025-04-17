@@ -12,4 +12,6 @@ public interface GameShape {
     float getRadius();
 
     Path2D.Float getPath();
+
+    void rotate(int i);
 }

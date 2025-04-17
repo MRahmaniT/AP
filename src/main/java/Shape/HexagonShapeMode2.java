@@ -93,6 +93,14 @@ public class HexagonShapeMode2 implements GameShape {
         g2d.setTransform(originalTransform);
     }
 
+    public void rotate(int i) {
+
+        rotation += 60;
+        if (rotation >= 360f) {
+            rotation -= 360f;
+        }
+    }
+
     @Override
     public float getRadius() {
         return this.radius;

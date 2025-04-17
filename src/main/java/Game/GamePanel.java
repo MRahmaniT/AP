@@ -133,6 +133,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 dataManager.addGameHistory(whoIsPlaying.getName(), history);
             }
             dataManager.saveFile();
+            gameOver = false;
             timer.stop();
             MainFrame.showGameOver();
         }

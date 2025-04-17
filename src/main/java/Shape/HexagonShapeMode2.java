@@ -84,6 +84,7 @@ public class HexagonShapeMode2 implements GameShape {
             }
         }
 
+        path = hexagon;
         // Choose a color and draw
         g2d.setColor(Color.BLUE);
         g2d.fill(hexagon);

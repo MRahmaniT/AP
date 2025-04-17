@@ -5,9 +5,7 @@ import java.awt.geom.Path2D;
 
 public class TriangleShape implements GameShape {
 
-    private Path2D.Float triangle;;
-    private Path2D.Float path = new Path2D.Float();;
-
+    private final Path2D.Float triangle = new Path2D.Float();
 
     // Position of the hexagon’s center
     private float x, y;
@@ -44,7 +42,6 @@ public class TriangleShape implements GameShape {
     @Override
     public void draw(Graphics2D g2d) {
         // Save the original transform
-        triangle = new Path2D.Float();
         var originalTransform = g2d.getTransform();
 
         // Translate and rotate the Graphics2D context
@@ -66,8 +63,6 @@ public class TriangleShape implements GameShape {
         triangle.lineTo(x3, y3);
         triangle.closePath();
 
-        path = triangle;
-
         // Choose a color and draw
         g2d.setColor(Color.BLACK);
         g2d.fill(triangle);
@@ -83,6 +78,6 @@ public class TriangleShape implements GameShape {
 
     @Override
     public Path2D.Float getPath() {
-        return path;
+        return this.triangle;
     }
 }

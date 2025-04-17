@@ -87,6 +87,7 @@ public class MainFrame extends JFrame {
         cardLayout.show(mainPanel, "History");
     }
     public static void showGameOver() {
+        mainPanel.remove(gamePanel);
         gameOverPanel = new GameOverPanel();
         cardLayout.show(mainPanel, "GameOver");
     }

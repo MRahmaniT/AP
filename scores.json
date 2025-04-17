@@ -5,35 +5,31 @@
   },
   "dd" : {
     "name" : "dd",
-    "score" : 3
+    "score" : 29
   },
   "ss" : {
     "name" : "ss",
-    "score" : 19
+    "score" : 34
   },
   "ff" : {
     "name" : "ff",
     "score" : 15
   },
+  "ee" : {
+    "name" : "ee",
+    "score" : 23
+  },
   "cd" : {
     "name" : "cd",
     "score" : 1
   },
-  "dsd" : {
-    "name" : "dsd",
-    "score" : 17
-  },
-  "sdsd" : {
-    "name" : "sdsd",
-    "score" : 8
+  "d" : {
+    "name" : "d",
+    "score" : 72
   },
   "fcf" : {
     "name" : "fcf",
     "score" : 15
-  },
-  "ere" : {
-    "name" : "ere",
-    "score" : 6
   },
   "j" : {
     "name" : "j",
@@ -43,8 +39,32 @@
     "name" : "gfgf",
     "score" : 15
   },
+  "regfddg" : {
+    "name" : "regfddg",
+    "score" : 27
+  },
+  "s" : {
+    "name" : "s",
+    "score" : 30
+  },
+  "dsd" : {
+    "name" : "dsd",
+    "score" : 17
+  },
+  "sdsd" : {
+    "name" : "sdsd",
+    "score" : 8
+  },
+  "ere" : {
+    "name" : "ere",
+    "score" : 6
+  },
   "sadasd" : {
     "name" : "sadasd",
     "score" : 31
+  },
+  "ali" : {
+    "name" : "ali",
+    "score" : 23
   }
 }

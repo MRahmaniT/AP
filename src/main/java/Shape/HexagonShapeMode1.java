@@ -3,9 +3,6 @@ package Shape;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.random.RandomGenerator;
 
 public class HexagonShapeMode1 implements GameShape {
 
